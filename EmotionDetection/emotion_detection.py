@@ -27,4 +27,4 @@ def emotion_detector(text_to_analyze):
         print("Request failed:", e)
         return None
 
-emotion_detector("I am so happy I am doing this")
+emotion_detector("I hate working long hours.")
