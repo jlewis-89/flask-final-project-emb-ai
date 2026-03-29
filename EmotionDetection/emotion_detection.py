@@ -9,6 +9,17 @@ def emotion_detector(text_to_analyze):
     }
     input_json = {"raw_document": {"text": text_to_analyze}}
 
+    # Test formatting for error handling
+    if not text_to_analyze:
+        return response.status_code == 400, {
+        "anger": None,
+        "disgust": None,
+        "fear": None,
+        "joy": None,
+        "sadness": None,
+        "dominant_emotion": None
+        }
+
     try:
         response = requests.post(url, headers=headers, json=input_json, timeout=10)
         data = json.loads(response.text)
@@ -26,5 +37,3 @@ def emotion_detector(text_to_analyze):
     except Exception as e:
         print("Request failed:", e)
         return None
-
-# Emotion_detector("I hate working long hours.")
