@@ -14,17 +14,17 @@ def emotion_detector(text_to_analyze):
         data = json.loads(response.text)
         emotions = data["emotionPredictions"][0]["emotion"]
         dominant_emotion = max(emotions, key=emotions.get)
-        return print({
+        return {
         "anger": emotions["anger"],
         "disgust": emotions["disgust"],
         "fear": emotions["fear"],
         "joy": emotions["joy"],
         "sadness": emotions["sadness"],
         "dominant_emotion": dominant_emotion
-        })
+        }
 
     except Exception as e:
         print("Request failed:", e)
         return None
 
-emotion_detector("I hate working long hours.")
+# Emotion_detector("I hate working long hours.")
